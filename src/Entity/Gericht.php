@@ -23,9 +23,19 @@ class Gericht
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $bild;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $beschreibung;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $preis;
 
     public function getId(): ?int
     {
@@ -52,6 +62,30 @@ class Gericht
     public function setBeschreibung(?string $beschreibung): self
     {
         $this->beschreibung = $beschreibung;
+
+        return $this;
+    }
+
+    public function getPreis(): ?float
+    {
+        return $this->preis;
+    }
+
+    public function setPreis(?float $preis): self
+    {
+        $this->preis = $preis;
+
+        return $this;
+    }
+
+    public function getBild(): ?string
+    {
+        return $this->bild;
+    }
+
+    public function setBild(string $bild): self
+    {
+        $this->bild = $bild;
 
         return $this;
     }
