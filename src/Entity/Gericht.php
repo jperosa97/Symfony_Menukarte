@@ -28,6 +28,11 @@ class Gericht
     private $bild;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Kategorie", inversedBy = "gericht")
+     */
+    private $kategorie;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $beschreibung;
@@ -86,6 +91,18 @@ class Gericht
     public function setBild(string $bild): self
     {
         $this->bild = $bild;
+
+        return $this;
+    }
+
+    public function getKategorie(): ?Kategorie
+    {
+        return $this->kategorie;
+    }
+
+    public function setKategorie(?Kategorie $kategorie): self
+    {
+        $this->kategorie = $kategorie;
 
         return $this;
     }
