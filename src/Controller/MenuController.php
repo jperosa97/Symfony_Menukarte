@@ -7,19 +7,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class MenuController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[Route('/menu', name: 'menu')]
     public function index(GerichtRepository $gr): Response
     {
         $gerichte = $gr->findAll();
-
-        //Wir zufällig zwei verschiedene Speisen ausgeben von der Datenbank
-        $zufall = array_rand($gerichte, 2);
-
-        return $this->render('home/index.html.twig', [
-           'gericht1' => $gerichte[$zufall[0]],
-           'gericht2' => $gerichte[$zufall[1]],
+        
+        
+        return $this->render('menu/index.html.twig', [
+            'gerichte' => $gerichte
         ]);
     }
 }
