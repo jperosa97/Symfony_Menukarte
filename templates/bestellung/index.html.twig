@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% set summe = 0 %}
+<br>
+<div class="container">
+<h2>Ihre Bestellung</h2>
+<br>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Bestell Nr.</td>
+            <td>Name</td>
+            <td>Preis</td>
+            <td>Status</td>
+     
+        </tr>
+        </thead>
+        <tbody>
+        {% for bestellung in bestellungen %}
+        {% set summe = summe + bestellung.preis %}
+            <tr>
+                <td> {{ bestellung.bnummer }} </td>
+                <td> {{ bestellung.name }} </td>
+                <td> {{ bestellung.preis }} Fr.</td>
+                <!-- eingeloggte User(Mitarbeiter) müssen diese Funktion nicht sehen-->
+                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <td> {{ bestellung.status }} </td>
+                {% endif %}
+
+
+			    <!--Nur eingeloggte Mitarbeiter können diese Funktionen sehen und bearbeiten-->
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <td>
+                
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           {{bestellung.status}}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{path('status', {id: bestellung.id, status: 'offen'})}}">Offen</a>
+                            <a class="dropdown-item" href="{{path('status', {id: bestellung.id, status: 'fertig'})}}">Fertig</a>
+                            <a class="dropdown-item" href="{{path('status', {id: bestellung.id, status: ' archiv'})}}">Archiv</a>
+                        </div>
+                    </div>
+               
+                </td> 
+                {% endif %}
+                <td>
+			<!--Wenn der Status nicht mehr offen ist zb. Fertig kann man ein Gericht nicht mehr löschen.-->
+                {% if bestellung.status == "offen" %}
+                <a type="button" class="btn btn-danger btn-sm" href="{{path('loeschen', {id: bestellung.id})}}">Entfernen</a></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        <td></td><td><b>Total:</b> </td>
+        <td> {{ summe }} Fr. </td>
+        <td></td><td></td>
+        <td></td><td></td>
+    </tbody>
+</table>
+</div>
+{% endblock %}
