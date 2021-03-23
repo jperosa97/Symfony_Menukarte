@@ -56,7 +56,7 @@
 			<li><a href="{{path('home')}}">Willkommen</a></li>
 			<li><a href="{{path('menu')}}">Menükarte</a></li>
 			<li><a href="{{path('bestellung')}}">Bestellung</a></li>
-			<li><a href="contact.html">Contact</a></li>
+			<li><a href="{{ path('mail') }}">Kellner</a></li>
 
 			<!--Nur eingeloggte Mitarbeiter können diese Funktionen sehen-->
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
