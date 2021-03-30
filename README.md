@@ -11,6 +11,15 @@ Mit dieser Symfony Applikation kann der Kunde seine Gericht auswählen und sieht
 
 Das Projekt wurde mit Hilfe von Symfony im Backend und Bootstrap als Frontend Programmiert. Dieses Projekt habe ich mit hilfe von Symfony Dokumentation https://symfony.com/ gemacht. 
 
+## Development server 
+
+Entweder mittels Symfony server starten [symfony serve]. Die App wird automatisch neu geladen, wenn Sie eine der Quelldateien ändern,
+Oder mit einem Server z.b. XAMPP. Die App im Browser öffnen und unter dem Ordner /public öffnen. 
+
+### Weitere Hilfe 
+
+https://symfony.com/
+
 
 
 
