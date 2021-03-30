@@ -13,8 +13,8 @@ Das Projekt wurde mit Hilfe von Symfony im Backend und Bootstrap als Frontend Pr
 
 ## Development server 
 
-Entweder mittels Symfony server starten [symfony serve]. Die App wird automatisch neu geladen, wenn Sie eine der Quelldateien ändern,
-Oder mit einem Server z.b. XAMPP. Die App im Browser öffnen und unter dem Ordner /public öffnen. 
+Entweder mittels Symfony server starten `symfony serve`. Die App wird automatisch neu geladen, wenn Sie eine der Quelldateien ändern,
+Oder mit einem Server z.b. XAMPP. Die App im Browser öffnen und unter dem Ordner `/public öffnen`. 
 
 ### Weitere Hilfe 
 
